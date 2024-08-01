@@ -1,0 +1,36 @@
+<div class="card">
+    <p-card [style]="{ width: '600px' }">
+        <form [formGroup]="loginForm" class="p-fluid">
+            <div >
+                <img src="../../../assets/images/user.png" alt="" style=" max-height: 20%; max-width: 20%; margin-left : 40%">
+            </div>
+            <div style="padding: 10px;">
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-user"></i>
+                    </p-inputGroupAddon>
+                    <input pInputText placeholder=" Enter your Username" formControlName="userName" name="userName" />
+                </p-inputGroup>
+
+            </div>
+            <div  style="padding: 10px;">
+
+                <p-password  placeholder="Enter your Password" formControlName="password" [toggleMask]="true"/>
+
+            </div>      
+            <p-button label="Login" severity="success" (click)="onSubmit()" [disabled]="!loginForm.valid" styleClass="p-button-rounded p-button-primary p-mt-2"></p-button>
+        </form>
+        <div style="margin-top: 15px; margin-left: 30%;">
+            Don't have a account?
+            <span style="margin-left: 20px;"><a  routerLink="/register" style="text-decoration: none; font-weight: bold; color: Blue;"> Register</a></span>
+        </div>
+        
+
+
+    </p-card>
+</div>
+<p-toast></p-toast>
+
+
+
+

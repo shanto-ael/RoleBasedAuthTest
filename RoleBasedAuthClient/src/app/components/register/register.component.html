@@ -1,0 +1,121 @@
+<div class="card">
+  <p-card [style]="{ width: '600px' }">
+    <form [formGroup]="registerForm" class="p-fluid">
+      <div>
+        <img
+          src="../../../assets/images/user.png"
+          alt=""
+          style="max-height: 20%; max-width: 20%; margin-left: 40%"
+        />
+      </div>
+      <div style="padding: 10px">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-user"></i>
+          </p-inputGroupAddon>
+          <input
+            pInputText
+            placeholder=" Enter your Username"
+            formControlName="userName"
+            name="userName"
+          />
+        </p-inputGroup>
+      </div>
+      <div style="margin-left: 10px">
+        <small class="block p-error">
+          @if(userName.invalid && (userName.dirty || userName.touched)){
+          @if(userName.errors?.['required']){
+          <div>
+            <small>Username is required!</small>
+          </div>
+
+          } }
+        </small>
+      </div>
+      <div style="padding: 10px">
+        <p-inputGroup>
+          <p-inputGroupAddon>
+            <i class="pi pi-envelope"></i>
+          </p-inputGroupAddon>
+          <input
+            pInputText
+            placeholder=" Enter your email"
+            formControlName="email"
+            name="email"
+          />
+        </p-inputGroup>
+      </div>
+      <div style="margin-left: 10px">
+        <small class="block p-error">
+          @if(email.invalid && (email.dirty || email.touched)){
+          @if(email.errors?.['required']){
+          <div>
+            <small>Email is required!</small>
+          </div>
+
+          } @if(email.errors?.['email']){
+          <div>
+            <small>Email should be valid!</small>
+          </div>
+
+          } }
+        </small>
+      </div>
+      <div style="padding: 10px">
+        <p-password
+          placeholder="Enter a strong password"
+          formControlName="password"
+          name = "password"
+          [toggleMask]="true"
+        />
+      </div>
+      <div style="padding: 10px">
+        <p-password
+          placeholder="Confirm your password"
+          formControlName="confirmPassword"
+          name = "confirmPassword"
+          [toggleMask]="true"
+          [feedback]="false" 
+        />
+      </div>
+      <div style="margin-left: 10px;">
+        <small class="block p-error">
+            @if(confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)){
+            @if(confirmPassword.errors?.['required']){
+            <div>
+              <small> Confirm the password!</small>
+            </div>
+    
+            } }
+            @if(registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid){
+                <div>
+                  <small>Password should match!</small>
+                </div>
+        
+            }
+          </small>
+      </div>
+      
+
+      <p-button
+        label="Register"
+        severity="success"
+        (click)="onSubmit()"
+        [disabled]="!registerForm.valid"
+        styleClass="p-button-rounded p-button-primary p-mt-2"
+      ></p-button>
+    </form>
+    <div style="margin-top: 15px; margin-left: 30%">
+      Already have a account?
+      <span style="margin-left: 20px"
+        ><a
+          routerLink="/login"
+          style="text-decoration: none; font-weight: bold; color: Blue"
+        >
+          Log In</a
+        ></span
+      >
+    </div>
+  </p-card>
+</div>
+
