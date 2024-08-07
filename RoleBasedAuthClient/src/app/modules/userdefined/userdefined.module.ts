@@ -11,6 +11,13 @@ import { ToastModule } from 'primeng/toast';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { PanelModule } from 'primeng/panel';
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar'
+import { RippleModule } from 'primeng/ripple';
+import { StyleClassModule } from 'primeng/styleclass';
 
 
 
@@ -28,7 +35,14 @@ import { MenubarModule } from 'primeng/menubar';
     RouterModule,
     ReactiveFormsModule,
     ToastModule,
-    MenubarModule
+    MenubarModule,
+    TableModule, 
+    TagModule, 
+    PanelModule,
+    SidebarModule,
+    AvatarModule,
+    RippleModule,
+    StyleClassModule
     
   ],
   providers: [MessageService]

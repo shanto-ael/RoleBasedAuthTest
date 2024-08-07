@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RoleBasedAUTH.Application.Abstraction;
+using RoleBasedAUTH.Domain;
 using RoleBasedAUTH.Presentation.Controllers.Base;
 using System.Security.Claims;
 
@@ -31,24 +32,20 @@ namespace RoleBasedAUTH.Presentation.Controllers
             return Ok(data);
         }
 
-        [HttpGet("getuserbyid")]
-        [Authorize(Roles = "User")]
-        public async Task<IActionResult> GetUserById(string Id)
+        [HttpGet("detail")]
+        [Authorize(Roles = "Admin,User")]
+        public async Task<IActionResult> GetUserInfo()
         {
             var user = HttpContext.User;
-            if (user == null)
-            {
-                return Unauthorized("User not authorized.");
+            var roles = User.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
+            var userId = user.Claims.Where(c => c.Type == "Id").Select(c => c.Value).FirstOrDefault();
+            if(userId == null){
+                return Unauthorized(new CommonResponse{
+                    StatusCode = "401",
+                    StatusMessage = "Unauthorized Access"
+                });
             }
-
-            var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
-            var userId = user.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier).Select(c => c.Value).FirstOrDefault();
-            if (!roles.Contains("User"))
-            {
-                return Forbid("User does not have the User role.");
-            }
-
-            var data = await _userService.GetUserById(Id);
+            var data = await _userService.GetUserDetail(userId!);
             return Ok(data);
         }
 

@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           var response = data as LoginResponse;
           var statusCode = response.statusCode;
           if(statusCode == "0"){
-            debugger;
             localStorage.setItem('token', response.token);
             this.messageService.add({severity:'success', summary:'Success', detail:'Login Successful'});
             this.route.navigate(['/dashboard']);

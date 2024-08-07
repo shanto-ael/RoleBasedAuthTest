@@ -1,0 +1,18 @@
+<div class="dashboard-container">
+    <p-panel header="Welcome to the Dashboard" class="dashboard-panel">
+      <p-card class="user-card">
+        <ng-template pTemplate="title">
+          <div class="user-info-title">
+            <i class="pi pi-user"></i> User Information
+          </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <div class="user-info">
+            <p><strong>User Name:</strong> {{user?.userName}}</p>
+            <p><strong>Email:</strong> {{user?.email}}</p>
+            <p><strong>Role:</strong> {{user?.roleName}}</p>
+          </div>
+        </ng-template>
+      </p-card>
+    </p-panel>
+  </div>

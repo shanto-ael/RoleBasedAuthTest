@@ -1,16 +1,17 @@
-<div style="position: absolute; top: 0; left: 0; width: 100%;">
-    <p-menubar>
-                <div style="padding: 10px;">
-                    <div style="display: flex; position: absolute;top: 0; left: 0; padding: 10px;">
-                        <h3>RoleBasedAuth</h3>
-                    </div>
-                    <div>
-                        <p-button>
-                            <a style="text-decoration: none; font-weight: bold;" (click)="LogOut()">Logout</a>
-                        </p-button>
-            
-                    </div>
-                </div>
-    </p-menubar>
-    
-</div>
+@if(userInfo){
+    <div class="navbar">
+        <i class="pi pi-bars" (click)="onToggleSidebar()"></i>
+        <div>
+            <h3>RoleBasedAuth</h3>
+        </div>
+        <div class="user-info">
+            <h5>{{userInfo.userName}}</h5>
+            <h5>|</h5>
+            <h5 class="role-name">{{userInfo.roleName}}</h5>
+            <p-button severity="info">
+                <a (click)="LogOut()">Logout</a>
+            </p-button>
+        </div>
+    </div>
+}
+

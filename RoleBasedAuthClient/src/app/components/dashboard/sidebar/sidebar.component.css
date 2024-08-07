@@ -1,0 +1,20 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar-toggle-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10001; /* Ensure it is above other elements */
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 40px; /* Adjust based on your layout */
+  }
+

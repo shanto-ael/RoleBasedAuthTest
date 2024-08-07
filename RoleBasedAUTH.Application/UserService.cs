@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Security.Claims;
+using Dapper;
 using RoleBasedAUTH.Application.Abstraction;
 using RoleBasedAUTH.Domain;
 using RoleBasedAUTH.Infrastructure;
@@ -21,7 +22,7 @@ namespace RoleBasedAUTH.Application
             }
         }
 
-        public async Task<UserDto> GetUserById(string Id)
+        public async Task<UserDto> GetUserDetail(string Id)
         {
             string sql = @"SELECT p.ID, p.UserName,p.Email,r.Name as RoleName from dbo.users p
                             LEFT JOIN dbo.UserRoles e on e.UserId = p.ID

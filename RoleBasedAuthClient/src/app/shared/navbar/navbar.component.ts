@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { UserdefinedModule } from '../../modules/userdefined/userdefined.module';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
+import { UserData } from '../../models/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +12,13 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  /**
-   *
-   */
-  constructor(private router : Router) {
+  router =  inject(Router)
+  @Input() userInfo : UserData | undefined
+  @Output() toggleSidebar = new EventEmitter<void>();
+  constructor(){}
 
-    
+  onToggleSidebar() {
+    this.toggleSidebar.emit();
   }
 
   LogOut() {
@@ -24,5 +27,4 @@ export class NavbarComponent {
     
     }
 
-
-}
+  }

@@ -5,6 +5,6 @@ namespace RoleBasedAUTH.Application.Abstraction
     public interface IUserService
     {
         Task<List<UserDto>> GetUsers();
-        Task<UserDto> GetUserById(string Id);
+        Task<UserDto> GetUserDetail(string Id);
     }
 }
