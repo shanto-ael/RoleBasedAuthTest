@@ -82,11 +82,11 @@ namespace RoleBasedAUTH.Application
             }
         }
 
-        public Task<bool> RegisterUser(User user)
+        public async Task<bool> RegisterUser(User user)
         {
             try
             {
-                var registerUser = _repository.RegisterUser(user);
+                var registerUser = await _repository.RegisterUser(user);
                 return registerUser;
             }
             catch

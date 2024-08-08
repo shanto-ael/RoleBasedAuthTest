@@ -152,6 +152,7 @@ namespace RoleBasedAUTH.Infrastructure
         {
             try
             {
+                
                 string sql = "INSERT INTO dbo.Users (UserName, Email, Password) VALUES (@UserName, @Email, @Password) ";
                 using(var connection = _context.CreateConnection())
                 {

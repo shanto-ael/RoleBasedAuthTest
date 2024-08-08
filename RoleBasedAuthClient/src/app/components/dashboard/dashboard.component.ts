@@ -3,7 +3,7 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { AuthService } from '../../service/auth.service';
 import { UserData } from '../../models/auth';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserComponent } from "./user/user.component";
 
 
@@ -11,7 +11,7 @@ import { UserComponent } from "./user/user.component";
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NavbarComponent, SidebarComponent, RouterOutlet, UserComponent],
+  imports: [NavbarComponent, SidebarComponent, RouterOutlet, UserComponent,RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

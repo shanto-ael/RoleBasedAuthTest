@@ -14,7 +14,7 @@ namespace RoleBasedAUTH.Application
         {
             string sql = @" SELECT p.ID, p.UserName,p.Email,r.Name as RoleName from dbo.users p
                             LEFT JOIN dbo.UserRoles e on e.UserId = p.ID
-                            LEFT JOIN dbo.Roles r on r.ID = e.ID ";
+                            LEFT JOIN dbo.Roles r on r.ID = e.RoleId ";
             using (var connection = _context.CreateConnection())
             {
                 var users = await connection.QueryAsync<UserDto>(sql);

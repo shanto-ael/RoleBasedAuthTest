@@ -1,8 +1,4 @@
-.dashboard-container {
-    display: flex;
-    height: 100vh;
-  }
-  
+
   .sidebar-toggle-icon {
     position: fixed;
     top: 10px;
@@ -17,4 +13,17 @@
     padding: 20px;
     margin-left: 40px; /* Adjust based on your layout */
   }
+  :host ::ng-deep .sbar{
+
+        top: 9%;
+        left: 0;
+        width: 14rem;
+        height: 100%;
+    }
+
+    :host ::ng-deep .p-menuitem-link-active{
+
+        background-color: rgb(35 34 47);
+        color: rgb(179 109 147);
+    }
 

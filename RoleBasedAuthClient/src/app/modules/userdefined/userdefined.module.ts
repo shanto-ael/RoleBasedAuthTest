@@ -18,6 +18,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { AvatarModule } from 'primeng/avatar'
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 
@@ -42,7 +43,8 @@ import { StyleClassModule } from 'primeng/styleclass';
     SidebarModule,
     AvatarModule,
     RippleModule,
-    StyleClassModule
+    StyleClassModule,
+    PaginatorModule
     
   ],
   providers: [MessageService]

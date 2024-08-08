@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../service/auth.service';
-import { Column, UserData } from '../../../models/auth';
+import { Column, PageEvent, UserData } from '../../../models/auth';
 import { UserdefinedModule } from '../../../modules/userdefined/userdefined.module';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [UserdefinedModule],
+  imports: [UserdefinedModule,DialogModule, InputTextModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
+
+    first: number = 0;
+
+    rows: number = 10;
+
   users : UserData[] = [];
   cols!: Column[];
   constructor(private authService : AuthService){}
@@ -18,6 +25,12 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.getAdminInformation();
   }
+  
+  onPageChange(event: PageEvent) {
+
+    this.first = event.first;
+    this.rows = event.rows;
+}
 
 
 
@@ -49,6 +62,11 @@ export class AdminComponent implements OnInit {
     else{
       return "danger";
     }
+  }
+  visible: boolean = false;
+
+  showDialog() {
+      this.visible = true;
   }
 
 }

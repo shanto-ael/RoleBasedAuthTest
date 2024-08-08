@@ -1,5 +1,4 @@
 <div class="dashboard-container">
-  @if(checkAuth){
   <app-navbar [userInfo]="user" (toggleSidebar)="toggleSidebar()"></app-navbar>
   @if(role){
   <app-sidebar
@@ -8,9 +7,7 @@
     (visibleChange)="onSidebarClose()"
   ></app-sidebar>
 
-  } }
+  }
 
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </div>
