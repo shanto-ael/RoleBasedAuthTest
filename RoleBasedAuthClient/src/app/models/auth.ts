@@ -28,3 +28,9 @@ export interface PageEvent {
     page: number;
     pageCount: number;
 }
+
+export interface Role {
+    name: string,
+    id: number
+}
+

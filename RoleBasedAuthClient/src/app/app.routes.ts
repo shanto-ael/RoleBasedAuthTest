@@ -6,6 +6,7 @@ import { authGuard } from './guards/auth.guard';
 import { UserComponent } from './components/dashboard/user/user.component';
 import { AdminComponent } from './components/dashboard/admin/admin.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
     {
@@ -17,7 +18,7 @@ export const routes: Routes = [
         component: RegisterComponent
     },
     {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
         children: [
             {
@@ -36,16 +37,16 @@ export const routes: Routes = [
                 canActivate: [authGuard],
                 data: { expectedRole: 'Admin' }
 
-            }]
-
-
+            }
+        ]
     },
     {
         path: 'unauthorized',
         component: UnauthorizedComponent
     },
     {
-        path: '', redirectTo: 'login', pathMatch: "full"
+        path: '**',
+        component: PagenotfoundComponent
     }
 
 

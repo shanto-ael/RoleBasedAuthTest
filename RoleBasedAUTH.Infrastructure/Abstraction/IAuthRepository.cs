@@ -9,7 +9,7 @@ namespace RoleBasedAUTH.Infrastructure.Abstraction
 {
     public interface IAuthRepository
     {
-        Task<bool> RegisterUser(User user);
+        Task<bool> RegisterUser(RegisterDto user);
         Task<string> Login(LoginRequest request);
         Task<int> AddRole(Role role);
         bool AssignRole(AddRoleToUser addRole);

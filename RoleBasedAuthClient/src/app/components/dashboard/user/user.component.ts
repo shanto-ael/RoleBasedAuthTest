@@ -15,6 +15,11 @@ import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 export class UserComponent implements OnInit {
   constructor(private authService: AuthService) {}
   user: UserData | undefined;
+  visible: boolean = false;
+
+    showDialog() {
+        this.visible = true;
+    }
 
   ngOnInit(): void {
     this.getUserInformation();

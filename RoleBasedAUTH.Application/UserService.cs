@@ -26,11 +26,15 @@ namespace RoleBasedAUTH.Application
         {
             string sql = @"SELECT p.ID, p.UserName,p.Email,r.Name as RoleName from dbo.users p
                             LEFT JOIN dbo.UserRoles e on e.UserId = p.ID
-                            LEFT JOIN dbo.Roles r on r.ID = e.ID WHERE p.ID = @ID";
+                            LEFT JOIN dbo.Roles r on r.ID = e.RoleId WHERE p.ID = @ID";
             using (var connections = _context.CreateConnection())
             {
-                var users = await connections.QueryFirstOrDefaultAsync<UserDto>(sql, new { ID = Id });
-                return users!;
+                var users = await connections.QueryAsync<UserDto>(sql, new { ID = Id });
+                if (users.Any(x => x.RoleName == "Admin") && users.Any(x => x.RoleName == "User"))
+                {
+                    return users.Where(x => x.RoleName == "Admin").FirstOrDefault()!;
+                }
+                return users.FirstOrDefault()!;
 
             }
         }

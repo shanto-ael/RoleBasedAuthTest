@@ -91,7 +91,7 @@ namespace RoleBasedAUTH.Infrastructure
                     var user = "SELECT * FROM dbo.users WHERE UserName = @UserName and Password = @Password";
                     using (var connection = _context.CreateConnection())
                     {
-                        User result = await connection.QueryFirstOrDefaultAsync<User>(user, new {UserName = request.UserName, Password = request.Password}) ?? null!;
+                        var result = await connection.QueryFirstOrDefaultAsync<User>(user, new {UserName = request.UserName, Password = request.Password}) ?? null!;
                         if(result == null)
                         {
                             return null!;
@@ -148,21 +148,33 @@ namespace RoleBasedAUTH.Infrastructure
             return jwtToken;
         }
 
-        public async Task<bool> RegisterUser(User user)
+        public async Task<bool> RegisterUser(RegisterDto user)
         {
             try
             {
                 
-                string sql = "INSERT INTO dbo.Users (UserName, Email, Password) VALUES (@UserName, @Email, @Password) ";
-                using(var connection = _context.CreateConnection())
+                string sql = @"
+                INSERT INTO dbo.Users (Id, UserName, Email, Password) 
+                VALUES (@Id, @UserName, @Email, @Password);
+
+                INSERT INTO dbo.UserRoles (UserId, RoleId) 
+                VALUES (@Id, @RoleId);";
+
+                using (var connection = _context.CreateConnection())
                 {
-                    var result = await connection.ExecuteAsync(sql, new { UserName = user.UserName, Email = user.Email, Password = user.Password });
-                    if(result == 1)
-                    {
-                        return true;
-                    }
-                    return false;
+                    var userId = Guid.NewGuid().ToString();
+
+                    var result = await connection.ExecuteAsync(sql, new 
+                    { 
+                        Id = userId, 
+                        UserName = user.UserName, 
+                        Email = user.Email, 
+                        Password = user.Password, 
+                        RoleId = 2 
+                    });
+                    return result == 2;
                 }
+
             }
             catch
             {

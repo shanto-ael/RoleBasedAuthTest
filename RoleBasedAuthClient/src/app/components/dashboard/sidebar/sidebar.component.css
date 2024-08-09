@@ -1,6 +1,6 @@
 
   .sidebar-toggle-icon {
-    position: fixed;
+    /* position: fixed; */
     top: 10px;
     left: 10px;
     cursor: pointer;
@@ -15,7 +15,7 @@
   }
   :host ::ng-deep .sbar{
 
-        top: 9%;
+        top: 81px;
         left: 0;
         width: 14rem;
         height: 100%;

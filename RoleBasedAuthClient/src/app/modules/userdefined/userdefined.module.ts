@@ -19,6 +19,8 @@ import { AvatarModule } from 'primeng/avatar'
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 
@@ -44,7 +46,9 @@ import { PaginatorModule } from 'primeng/paginator';
     AvatarModule,
     RippleModule,
     StyleClassModule,
-    PaginatorModule
+    PaginatorModule,
+    DialogModule,
+    MultiSelectModule 
     
   ],
   providers: [MessageService]

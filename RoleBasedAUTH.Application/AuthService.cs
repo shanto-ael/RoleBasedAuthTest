@@ -82,7 +82,7 @@ namespace RoleBasedAUTH.Application
             }
         }
 
-        public async Task<bool> RegisterUser(User user)
+        public async Task<bool> RegisterUser(RegisterDto user)
         {
             try
             {

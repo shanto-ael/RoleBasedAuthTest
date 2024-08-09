@@ -20,7 +20,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {       
           console.error('HTTP error 401 Unauthorized:', err);
-          router.navigate(['/login']);
+          localStorage.clear()
+          router.navigate(['/unauthorized']);
         } else {
           console.error('HTTP error:', err);
         }

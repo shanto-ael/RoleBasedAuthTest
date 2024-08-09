@@ -13,7 +13,7 @@ namespace RoleBasedAUTH.Presentation.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser([FromBody] User user)
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterDto user)
         {
             if (!ModelState.IsValid)
             {

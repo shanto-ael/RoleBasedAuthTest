@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-    localStorage.clear();
+    this.checkIsLoggedIn()
 
   }
+  
 
   loginForm = this.fb.group({
     userName: new FormControl('', [Validators.required]),
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
           if(statusCode == "0"){
             localStorage.setItem('token', response.token);
             this.messageService.add({severity:'success', summary:'Success', detail:'Login Successful'});
-            this.route.navigate(['/dashboard']);
+            this.route.navigate(['/']);
           }
           else{
             console.log(response.statusMessage);
@@ -62,6 +63,16 @@ export class LoginComponent implements OnInit {
 
   showToast( severity: string, summary: string, detail: string) {
     this.messageService.add({severity:severity, summary:summary, detail:detail});
+}
+
+checkIsLoggedIn(){
+  const isLoggedIn = this.authService.isLoggedIn();
+  if (!isLoggedIn) {
+    this.route.navigate(['/login']);
+  }
+  else{
+    this.route.navigate(['/'])
+  }
 }
 
 }
