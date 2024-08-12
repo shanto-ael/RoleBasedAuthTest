@@ -22,7 +22,6 @@ export class SidebarComponent implements OnInit {
   }
   @Input() visible : boolean = false
   @Input() userRole: any;
-  @Output() visibleChange = new EventEmitter<boolean>();
   items: MenuItem[] = [];
   activeRoute : string = ''
 
@@ -60,9 +59,7 @@ export class SidebarComponent implements OnInit {
       ];
     }
   }
-  closeSidebar() {
-    this.visibleChange.emit(false);
-  }
+
   getActiveRoutes(){
     this.router.events.subscribe(() => this.activeRoute = this.router.url)
   }

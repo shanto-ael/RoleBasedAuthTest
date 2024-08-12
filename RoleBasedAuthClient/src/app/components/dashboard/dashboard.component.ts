@@ -16,7 +16,7 @@ import { UserComponent } from "./user/user.component";
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  visibleSidebar: boolean = false;
+  visibleSidebar: boolean = true;
   user : UserData | undefined
   role : string | undefined
   

@@ -19,11 +19,17 @@
         left: 0;
         width: 14rem;
         height: 100%;
+        background: #353d49;
     }
 
     :host ::ng-deep .p-menuitem-link-active{
+      background-color: rgb(117 97 157);
+      color: rgb(255 238 247);
+    }
 
-        background-color: rgb(35 34 47);
-        color: rgb(179 109 147);
+    :host ::ng-deep .p-panelmenu .p-panelmenu-header .p-panelmenu-header-content{
+
+      border: none;
+      border-radius: 0%;
     }
 

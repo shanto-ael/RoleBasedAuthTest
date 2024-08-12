@@ -1,6 +1,8 @@
 @if(userInfo){
     <div class="navbar">
-        <i class="pi pi-bars" (click)="onToggleSidebar()"></i>
+        <p-button  icon = "pi pi-bars" [link] = "true" (click)="onToggleSidebar()">
+        </p-button >
+        <!-- <i class="pi pi-bars" (click)="onToggleSidebar()"></i> -->
         <div>
             <h3>RoleBasedAuth</h3>
         </div>
